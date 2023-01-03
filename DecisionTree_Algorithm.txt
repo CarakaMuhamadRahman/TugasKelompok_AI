@@ -1,0 +1,27 @@
+We needs to be decided on :
+1. Split Feature
+2. Split Point
+3. When to Stop splitting
+
+Algorithm Decision Tree:
+1. Calculate IG(Information Gain) with each possible split.
+2. Divide set with that feature and value that gives teh most Information Gain.
+3. Divide tree and do the same for all created branches.
+4. ...until a stopping criteria is reached.
+
+----------------------------------------------------
+Information Gain Formulas :                        -
+IG = E(parent) - [weighted average] * E(children)  -
+                                                   -
+---------------                                    -
+noted :       -                                    - 
+E = Entropy   -                                    -
+---------------                                    -
+  						   -
+Entropy Formulas :                         	   -
+E = - sigma p(x) * log2(p(X))                      -
+                                                   -
+----------------------------------------------------
+
+Stopping Criteria:
+maximum depth, minimum number of samples, min impurity decrease.
