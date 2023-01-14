@@ -8,14 +8,15 @@ model = pickle.load(open('model.pkl','rb'))
 
 @app.route("/")
 def home():
-    return  render_template('index.html')
+    return  'This API for Playing Golf Reccomendation Application'
+
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    int_features = [int(x) for x in request.form.values()]
-    features = [np.array(int_features)]
-    prediction = model.predict(features)
-    return render_template("index.html", prediction_text = "{}".format(prediction))
+    json_ = request.json
+    query_df = pd.DataFrame(json_)
+    prediction = model.predict(query_df)
+    return jsonify({'Prediction': list(prediction)})
 
 if __name__ == "__main__":
     app.run(debug=True)
